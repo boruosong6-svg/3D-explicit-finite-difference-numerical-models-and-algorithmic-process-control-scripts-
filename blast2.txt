@@ -1,7 +1,11 @@
+model mech null ran  x 170 190 y 0 2 z 50 60
+cyc 1000
+solve
+
 set large
 ini xvel 0 yvel 0 zvel 0
-model mech null ran  x 170 190 y 0 2 z 50 60
-model mech null ran  x 80 100 y 0 2 z 50 60
+
+model mech null ran  x 140 160 y 0 2 z 50 60
 cyc 1000
 
 
@@ -18,12 +22,13 @@ tab 1 read baopo.acc
 tab 2 read baopo.acc
 tab 3 read baopo.acc
 ;
-apply nstress -1.0 hist table 3 range x 170 190 y 0 2 z 49.9 50.1
-apply dstress 1.0 hist table 1 range x 170 190 y 0 2 z 49.9 50.1
-apply sstress -1.0 hist table 2 range x 170 190 y 0 2 z 49.9 50.1
-apply nstress -1.0 hist table 3 range x 80 100 y 0 2 z 49.9 50.1
-apply dstress 1.0 hist table 1 range x 80 100 y 0 2 z 49.9 50.1
-apply sstress -1.0 hist table 2 range x 80 100 y 0 2 z 49.9 50.1
+
+apply nstress -1.0 hist table 3 range x 140 160 y 0 2 z 49.9 50.1
+apply dstress 1.0 hist table 1 range x 140 160 y 0 2 z 49.9 50.1
+apply sstress -1.0 hist table 2 range x 140 160 y 0 2 z 49.9 50.1
+
+
+
 
 apply ff;施加自由场边界
 
@@ -62,12 +67,13 @@ hist gp zvel 75 1 35
 hist gp xacc 75 1 35  
 hist gp yacc 75 1 35 
 hist gp zacc 75 1 35 
+hist dytime
 
 
-set dyn damp rayleigh 0.05 63
+set dyn damp rayleigh 0.1 22.5
 hist unbal
-solve age 0.05
+solve age 0.1
 
-save 动力0.05s12.sav
+save 动力0.1s2.sav
 
 
